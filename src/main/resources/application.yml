@@ -1,0 +1,32 @@
+server:
+  port: 8092
+  servlet:
+    contextPath: /api/bank
+
+spring:
+  application:
+    name: bank-details
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: none
+    properties.hibernate.format_sql: true
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  database.driver-class-name: org.postgresql.Driver
+  datasource:
+    initialization-mode: always
+    platform: postgres
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    hikari.connection-timeout: 20000
+    hikari.minimum-idle: 4
+    hikari.maximum-pool-size: 8
+    hikari.idle-timeout: 300000
+    hikari.max-lifetime: 1200000
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+    schemas : account
+    locations: classpath:/db/migration
+    enabled: true
+

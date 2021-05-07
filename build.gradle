@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version "${springVersion}"
+
+}
+
+group 'org.bank'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.4.0'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    // Postgres
+    runtimeOnly "org.postgresql:postgresql:${postgresqlVersion}"
+    implementation 'org.flywaydb:flyway-core:6.4.0'
+}
